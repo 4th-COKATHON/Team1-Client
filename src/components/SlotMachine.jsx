@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import RollingArea from "./RollingArea";
+import Button from "./Button";
 
 const SlotMachine = ({ onClose }) => {
   const itemContainer = [
@@ -39,9 +40,28 @@ const SlotMachine = ({ onClose }) => {
   ];
 
   const [isRolling, setIsRolling] = useState(false);
+  const [isStopped, setIsStopped] = useState(false);
 
   const toggleRolling = () => {
-    setIsRolling((prev) => !prev);
+    setIsRolling((prev) => {
+      const newState = !prev;
+      if (newState) {
+        setIsStopped(true);
+      } else {
+        setIsStopped(false);
+      }
+      return newState;
+    });
+  };
+
+  const getButtonType = () => {
+    if (isRolling && isStopped) {
+      return "next";
+    } else if (isRolling) {
+      return "stop";
+    } else {
+      return "start";
+    }
   };
 
   return (
@@ -86,12 +106,11 @@ const SlotMachine = ({ onClose }) => {
           미션을 수행해 포인트를 획득하세요
         </div>
       </div>
-      <button
+      <Button
+        type={getButtonType()} // Use the dynamic button type
         onClick={toggleRolling}
         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-      >
-        {isRolling ? "Stop" : "Start"}
-      </button>
+      />
     </div>
   );
 };
