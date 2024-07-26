@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Axios 인스턴스 생성
 const api = axios.create({
-  baseURL: "http://54.180.50.177:8080",
+  baseURL: "https://www.dartravel.store",
 });
 
 export const getUserId = async (email) => {
