@@ -7,9 +7,9 @@ const Home = () => {
   return (
     <div className="w-full h-full relative">
       <Map currentIndex={0}></Map>
-      <Modal>
+      {/* <Modal>
         <SlotMachine></SlotMachine>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
