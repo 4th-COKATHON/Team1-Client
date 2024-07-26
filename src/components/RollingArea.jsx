@@ -32,7 +32,6 @@ const RollingArea = ({ content, isRolling, index }) => {
     // `isStarted`가 true로 변경될 때만 interval을 설정합니다.
     const interval = isStarted
       ? setInterval(() => {
-          console.log(index);
           if (isRolling) {
             setCurrentIndex((indexes) => {
               const newCurrent = (indexes.current + 1) % contentLength;

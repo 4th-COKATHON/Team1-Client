@@ -47,15 +47,14 @@ const SlotMachine = ({ onClose }) => {
       const newState = !prev;
       if (newState) {
         setIsStopped(true);
-      } else {
-        setIsStopped(false);
       }
       return newState;
     });
   };
 
   const getButtonType = () => {
-    if (isRolling && isStopped) {
+    console.log(!isRolling, isStopped);
+    if (!isRolling && isStopped) {
       return "next";
     } else if (isRolling) {
       return "stop";
@@ -108,7 +107,7 @@ const SlotMachine = ({ onClose }) => {
       </div>
       <Button
         type={getButtonType()} // Use the dynamic button type
-        onClick={toggleRolling}
+        onClick={!isRolling && isStopped ? onClose : toggleRolling}
         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
       />
     </div>
