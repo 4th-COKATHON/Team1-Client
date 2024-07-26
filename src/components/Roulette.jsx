@@ -1,21 +1,3 @@
-// import React from "react";
-// import { Wheel } from "react-custom-roulette";
-// import { useState } from "react";
-
-// const Roulette = () => {
-//   const [mustSpin, setMustSpin] = useState(false);
-
-//   const data = [
-//     { option: "0", style: { backgroundColor: "green", textColor: "black" } },
-//     { option: "1", style: { backgroundColor: "white" } },
-//     { option: "2" },
-//   ];
-
-//   return <Wheel mustStartSpinning={mustSpin} prizeNumber={3} data={data} />;
-// };
-
-// export default Roulette;
-
 import React, { useState } from "react";
 import { Wheel } from "react-custom-roulette";
 
