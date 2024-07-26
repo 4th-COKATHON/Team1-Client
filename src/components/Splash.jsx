@@ -4,7 +4,7 @@ import logoText from "../assets/SplashLogoText.png";
 
 const Splash = () => {
   return (
-    <div className="bg-[#34D37F] h-screen flex items-center justify-center">
+    <div className="bg-[#4384F9] h-screen flex items-center justify-center">
       <div className="flex gap-[15px] items-center mx-[70px] w-[390px]">
         <img src={logo} alt="logo" className="w-[70px] h-[70px]" />
         <div className="flex flex-col items-center justify-center">

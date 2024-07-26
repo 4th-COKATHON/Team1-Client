@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import RollingArea from "./RollingArea";
 
-const SlotMachine = () => {
+const SlotMachine = ({ onClose }) => {
   const itemContainer = [
     {
       title: "Where",
