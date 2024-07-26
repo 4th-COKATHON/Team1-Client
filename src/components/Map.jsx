@@ -1,27 +1,9 @@
 import React from "react";
 import logoText from "../assets/LogoText.png";
-import { useState } from "react";
-import Modal from "./Modal";
-import Roulette from "./Roulette";
 
-/**
- * 0이면 start, 3이면 reward 주황색으로 변함
- * @param {number} currentIndex
- * @returns
- */
-const Map = ({ currentIndex }) => {
-  const [modal, setModal] = useState(false);
-
-  const handleCellClick = () => {
-    setModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setModal(false);
-  };
-
+const Map = ({ currentIndex, onCellClick }) => {
   return (
-    <div className="bg-[#E9EBF0] w-full h-screen flex justify-center items-center p-3">
+    <div className="bg-white w-full h-screen flex justify-center items-center p-3">
       <div className="w-[95%] h-[90%]">
         <div className="w-full h-full grid grid-cols-5 grid-rows-10 gap-3">
           {/* Row 1 */}
@@ -31,42 +13,43 @@ const Map = ({ currentIndex }) => {
                 ? "bg-[#4384F9] text-white"
                 : "bg-[#D6E7FF] text-[#4384F9]"
             }`}
-            onClick={handleCellClick}
+            onClick={onCellClick}
           >
             Start
           </div>
-          <div className="w-full h-full bg-white border border-[#D6E7FF] col-span-3"></div>
+          <div className="w-full h-full bg-[#F3F8FF] border border-[#D6E7FF] col-span-3"></div>
           <div
-            className={`w-full h-full text-white flex items-center justify-center border border-[#D6E7FF] rounded-tr-lg ${
+            className={`w-full h-full text-white flex items-center cursor-pointer justify-center border border-[#D6E7FF] rounded-tr-lg ${
               currentIndex === 1
                 ? "bg-[#4384F9] text-white"
                 : "bg-[#D6E7FF] text-[#4384F9]"
             }`}
+            onClick={onCellClick}
           >
             Mission
           </div>
 
           {/* Row 2 */}
-          <div className="w-full h-full bg-white border border-[#D6E7FF]"></div>
+          <div className="w-full h-full border border-[#D6E7FF] bg-[#F3F8FF]"></div>
           <div className="w-full h-full col-span-3"></div>
-          <div className="w-full h-full bg-white border border-[#D6E7FF] row-span-3"></div>
+          <div className="w-full h-full border border-[#D6E7FF] bg-[#F3F8FF] row-span-3"></div>
 
           {/* Row 3 */}
-          <div className="w-full h-full bg-white border border-[#D6E7FF] row-span-3"></div>
+          <div className="w-full h-full border border-[#D6E7FF] bg-[#F3F8FF] row-span-3"></div>
           <div className="w-full h-full col-span-3"></div>
           <div className="w-full h-full col-span-3"></div>
           <div className="w-full h-full col-span-3"></div>
-          <div className="w-full h-full bg-white border border-[#D6E7FF]"></div>
+          <div className="w-full h-full bg-[#F3F8FF] border border-[#D6E7FF]"></div>
 
           {/* Row 5 */}
-          <div className="w-full h-full bg-white border border-[#D6E7FF]"></div>
+          <div className="w-full h-full border bg-[#F3F8FF] border-[#D6E7FF]"></div>
           <div className="w-full h-full col-span-3"></div>
-          <div className="w-full h-full bg-white border border-[#D6E7FF]"></div>
+          <div className="w-full h-full border bg-[#F3F8FF] border-[#D6E7FF]"></div>
 
           {/* Row 6 */}
-          <div className="w-full h-full bg-white border border-[#D6E7FF] row-span-3"></div>
+          <div className="w-full h-full border bg-[#F3F8FF] border-[#D6E7FF] row-span-3"></div>
           <div className="w-full h-full col-span-3"></div>
-          <div className="w-full h-full bg-white border border-[#D6E7FF] row-span-3"></div>
+          <div className="w-full h-full border bg-[#F3F8FF] border-[#D6E7FF] row-span-3"></div>
           <div className="w-full h-full col-span-3"></div>
           <div className="w-full h-full col-span-3"></div>
 
@@ -80,8 +63,8 @@ const Map = ({ currentIndex }) => {
           >
             Review
           </div>
-          <div className="w-full h-full bg-white border border-[#D6E7FF]"></div>
-          <div className="w-full h-full bg-white border border-[#D6E7FF] col-span-2"></div>
+          <div className="w-full h-full border bg-[#F3F8FF] border-[#D6E7FF]"></div>
+          <div className="w-full h-full border bg-[#F3F8FF] border-[#D6E7FF] col-span-2"></div>
           <div
             className={`w-full h-full text-white flex items-center justify-center border border-[#D6E7FF] rounded-br-lg ${
               currentIndex === 3
@@ -93,16 +76,6 @@ const Map = ({ currentIndex }) => {
           </div>
         </div>
       </div>
-      <img
-        src={logoText}
-        alt="logotext"
-        className="absolute flex items-center justify-center"
-      />
-      {modal && (
-        <Modal>
-          <Roulette onClose={handleCloseModal} />
-        </Modal>
-      )}
     </div>
   );
 };
