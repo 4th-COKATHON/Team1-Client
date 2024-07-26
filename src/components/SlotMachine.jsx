@@ -40,7 +40,7 @@ const SlotMachine = ({ onClose }) => {
   ];
 
   const [isRolling, setIsRolling] = useState(false);
-  const [isStoppped, setIsStopped] = useState(false);
+  const [isStopped, setIsStopped] = useState(false);
 
   const toggleRolling = () => {
     setIsRolling((prev) => {
