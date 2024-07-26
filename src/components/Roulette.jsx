@@ -44,7 +44,7 @@ const Roulette = ({ onClose }) => {
     setShowWheel(false);
     setShowText(false);
     const winningOption = data[prizeNumber - 1].option;
-    setText(`${winningOption} 당첨!`);
+    setText(`서울 당첨!`);
   };
 
   return (
