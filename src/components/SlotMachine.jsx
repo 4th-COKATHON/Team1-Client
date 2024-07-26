@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import RollingArea from "./RollingArea";
+import Button from "./Button";
 
-const SlotMachine = () => {
+const SlotMachine = ({ onClose }) => {
   const itemContainer = [
     {
       title: "Where",
@@ -39,20 +40,38 @@ const SlotMachine = () => {
   ];
 
   const [isRolling, setIsRolling] = useState(false);
+  const [isStopped, setIsStopped] = useState(false);
 
   const toggleRolling = () => {
-    setIsRolling((prev) => !prev);
+    setIsRolling((prev) => {
+      const newState = !prev;
+      if (newState) {
+        setIsStopped(true);
+      }
+      return newState;
+    });
+  };
+
+  const getButtonType = () => {
+    console.log(!isRolling, isStopped);
+    if (!isRolling && isStopped) {
+      return "next";
+    } else if (isRolling) {
+      return "stop";
+    } else {
+      return "start";
+    }
   };
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
       <div className="mb-4">미션을 수행해 볼까요?</div>
-      <div className="relative flex flex-col items-center w-[90%] h-[390px] bg-[#21CD76] rounded-lg p-4">
+      <div className="relative flex flex-col items-center w-[90%] h-[390px] bg-[#4384F9] rounded-lg p-4">
         <div className="flex flex-row justify-center items-center gap-8 w-full h-4 mb-4">
           {[...Array(7)].map((_, index) => (
             <div
               key={index}
-              className="w-[20px] h-[20px] bg-[#FFE767] rounded-full border border-black"
+              className="w-[20px] h-[20px] bg-[#ADCAFF] rounded-full"
             ></div>
           ))}
         </div>
@@ -63,7 +82,7 @@ const SlotMachine = () => {
               className="flex flex-col flex-1 items-center gap-2 relative"
               style={{ flexBasis: 0 }}
             >
-              <div className="flex justify-center items-center w-full h-[32px] rounded-2xl bg-[#F4653A] border border-black">
+              <div className="flex justify-center items-center w-full h-[32px] rounded-2xl bg-[#D6E7FF]">
                 {item.title}
               </div>
               <RollingArea
@@ -78,20 +97,19 @@ const SlotMachine = () => {
           {[...Array(7)].map((_, index) => (
             <div
               key={index}
-              className="w-[20px] h-[20px] bg-[#FFE767] rounded-full border border-black"
+              className="w-[20px] h-[20px] bg-[#D6E7FF] rounded-full"
             ></div>
           ))}
         </div>
-        <div className="absolute -bottom-6 flex justify-center items-center bg-white w-[80%] h-[60px] rounded-xl border border-black">
+        <div className="absolute -bottom-6 flex text-[#4384F9] justify-center items-center bg-white w-[80%] h-[60px] rounded-[20px] border border-black">
           미션을 수행해 포인트를 획득하세요
         </div>
       </div>
-      <button
-        onClick={toggleRolling}
+      <Button
+        type={getButtonType()} // Use the dynamic button type
+        onClick={!isRolling && isStopped ? onClose : toggleRolling}
         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-      >
-        {isRolling ? "Stop" : "Start"}
-      </button>
+      />
     </div>
   );
 };
