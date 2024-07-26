@@ -17,9 +17,6 @@ jobs:
         with:
           node-version: '16'  # 사용하려는 Node.js 버전 지정
 
-      - name: Check Node version
-        run: node -v
-
       - name: Install dependencies
         run: npm install
 
@@ -36,5 +33,5 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_PEM_KEY }}
-          source: "build/*"
+          source: "./dist/*"
           target: "/home/${{ secrets.SERVER_USER }}/dartravel/frontend/deploy"
