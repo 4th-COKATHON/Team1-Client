@@ -55,7 +55,7 @@ const RollingArea = ({ content, isRolling, index }) => {
   }, [isRolling, isStarted]); // `isRolling`과 `isStarted` 의존성 추가
 
   return (
-    <div className="flex flex-col w-full h-[200px] border border-black rounded-2xl bg-white overflow-hidden relative">
+    <div className="flex flex-col w-full h-[200px] rounded-2xl bg-white overflow-hidden relative">
       {content.map((contentItem, contentIndex) => (
         <div
           key={contentIndex}
