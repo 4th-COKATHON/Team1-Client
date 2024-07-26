@@ -6,11 +6,11 @@ import Signup from "../pages/Signup";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Signup />,
   },
   {
-    path: "signup",
-    element: <Signup />,
+    path: "/home",
+    element: <Home />,
   },
 ]);
 

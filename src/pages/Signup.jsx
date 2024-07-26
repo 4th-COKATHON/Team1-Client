@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import Splash from "../components/Splash";
 import logo from "../assets/DirectHit.png";
 import { getUserId } from "../api/api";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -14,13 +16,13 @@ const Signup = () => {
         getUserId(email).then((userId) => {
           console.log("Successfully added user with ID:", userId);
           setEmail("");
+          navigate("/home"); // 이메일 처리 후 /home 경로로 이동
         });
       } else {
         console.log("Please enter a valid email");
       }
     }
   };
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
