@@ -4,7 +4,7 @@ import logoText from "../assets/LogoText.png";
 const Home = () => {
   return (
     <>
-      <div className="relative bg-red-200 w-full h-screen flex justify-center items-center p-3">
+      <div className="relative bg-[#E9EBF0] w-full h-screen flex justify-center items-center p-3">
         <div className="w-[95%] h-[90%]">
           <div className="relative w-full h-full grid grid-cols-5 grid-rows-10 gap-3">
             {/* Row 1 */}
